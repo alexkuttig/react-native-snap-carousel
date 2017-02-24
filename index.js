@@ -397,6 +397,9 @@ export default class Carousel extends Component {
     snapToItem (index, animated = true, fireCallback = true, initial = false) {
         const itemsLength = this._positions.length;
 
+        if(typeof index === 'undefined'){
+            index = 0;
+        }
         if (index >= itemsLength) {
             index = itemsLength - 1;
             fireCallback = false;
@@ -465,7 +468,7 @@ export default class Carousel extends Component {
               onResponderRelease={this._onTouchRelease}
               onScroll={this._onScroll}
               onTouchStart={this._onTouchStart}
-              scrollEventThrottle={50}
+              scrollEventThrottle={100}
               {...this.props}
               >
                 { this.items }
